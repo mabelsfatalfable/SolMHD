@@ -1,5 +1,0 @@
-k_B <- Boltzmann constant
-T <- #particle temperature or plasma temperature
-m_p <- #particle mass
-
-v_c <- sqrt(k_B *T/m_p)
