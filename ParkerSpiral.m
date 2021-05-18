@@ -9,6 +9,7 @@ r_0 = 1; %Rsun
 AU = 149597871; %kilometers
 Rsun = 6.9599 * 10^5; %km
 r = 1:0.1:2150;
+%Calculation of speed of solar wind from the curve fit to Tcorona = 1*10^6 K obtained from Parker's Solution of Solar Wind solved in HW#1
 for i=1:1:21491;
 V_sw(i) = 103.54 * log(r(i)) - 37.4; 
 end
@@ -21,8 +22,8 @@ B_r_nT = 10^-9 *B_r_T; %Tesla
 B_phi_nT = 10^-9 *B_phi_T; %Tesla
 Psi = 180*atan(B_phi ./ B_r)/3.1415;
 r_AU = r*Rsun/AU;
-%V_sw = 300;
-figure;
+%V_sw = 300; %open this comment for constant speed of solar wind
+figure; %plotting in cylindirical coordinates
 phi_0 = 0; %longitude
 phi_parker = phi_0 - 180*w_s .*(r - r_0).*Rsun ./ (V_sw .* 3.1415);
 phi_parker_radians = deg2rad(phi_parker);
@@ -49,6 +50,7 @@ pax = gca;
 pax.ThetaColor = 'blue';
 pax.RColor = [0 .5 0];
 pax.GridColor = 'red';
+%plotting trajectories of planets
 %Mercury
 th = linspace(0,2*pi,50);
 r = 0.387;
@@ -97,7 +99,7 @@ plot(r*Rsun/AU,B_r); %radial component of B
 plot(r*Rsun/AU,B_phi); %azimuthal component of B
 xlim([0 10])
 r = 1:0.1:2150;
-B_tot = sqrt(B_phi.^2 + B_r.^2);
+B_tot = sqrt(B_phi.^2 + B_r.^2); %magnitude of interplanetary magnetic field 
 figure;
 semilogy(r*Rsun/AU,B_tot * 10^5) %nT
 title('IMF Strength Beyond Saturn in XY axes (nT)')
